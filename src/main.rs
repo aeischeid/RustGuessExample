@@ -61,7 +61,7 @@ fn guessin_time(top_range: &u32) {
                 num
             },
             Err(_) => {
-                println!("stop messing around!");
+                println!("stop messing around - gimme the digits you know I want!");
                 continue;
             },
         };
