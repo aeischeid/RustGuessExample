@@ -15,6 +15,17 @@ fn main() {
     println!("similar to groovy gString, \"foo $var thing\" or js strings with `idont $know etc.` {}", s);
 
 
+    let s = "  English  ";
+    let firstLetter1 = s.trim_start().chars().next().unwrap();
+    assert_eq!('E', firstLetter1);
+    println!("first letting in LTR lang string {}", firstLetter1);
+
+    // how the eff does it know directionality?!?!?
+    let s = "  עברית  ";
+    let firstLetter2 = s.trim_start().chars().next().unwrap();
+    assert!('ע' == firstLetter2);
+    println!("first letting in RTL lang string {}", firstLetter2);
+
     // println!("{:?}", );
     for c in "नमस्ते".chars() {
         println!("{}", c);
