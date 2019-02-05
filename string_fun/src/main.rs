@@ -16,15 +16,21 @@ fn main() {
 
 
     let s = "  English  ";
-    let firstLetter1 = s.trim_start().chars().next().unwrap();
-    assert_eq!('E', firstLetter1);
-    println!("first letting in LTR lang string {}", firstLetter1);
+    
+    let first_letter1 = s.trim_start().chars().next();
+    match first_letter1 {
+        Some(str) => {
+            assert_eq!('E', str);
+            println!("first letting in LTR lang string {}", str);
+        },
+        _ => (),
+    }
 
     // how the eff does it know directionality?!?!?
     let s = "  עברית  ";
-    let firstLetter2 = s.trim_start().chars().next().unwrap();
-    assert!('ע' == firstLetter2);
-    println!("first letting in RTL lang string {}", firstLetter2);
+    let first_letter2 = s.trim_start().chars().next().unwrap();
+    assert!('ע' == first_letter2);
+    println!("first letting in RTL lang string {}", first_letter2);
 
     // println!("{:?}", );
     for c in "नमस्ते".chars() {
