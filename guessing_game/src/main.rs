@@ -13,7 +13,7 @@ fn main() {
 
     println!("my secret number will be between 1 and a number you pick...");
     let mut got_top_range = false;
-    let mut top_range = 100;
+    let mut top_range: u32 = 100;
 
     while !got_top_range {
         let mut top_range_input = String::new();
@@ -22,11 +22,15 @@ fn main() {
 
         top_range = match top_range_input.trim().parse() {
             Ok(num) => {
+                if num < 3 {
+                    println!("that would be to easy, pick a larger number");
+                    continue;
+                }
                 got_top_range = true;
                 num
             },
             Err(_) => {
-                println!("stop goofing - how aboout a number now?!");
+                println!("stop goofing - how aboout a number (> 1) now?!");
                 continue;
             },
         };
@@ -65,6 +69,11 @@ fn guessin_time(top_range: &u32) {
                 continue;
             },
         };
+
+        if guess > top_range {
+            println!("did you forget? The secret number will be between 1 and {}.", top_range);
+            continue;
+        }
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("{} low!", pre_low_high),
