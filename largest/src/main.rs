@@ -22,6 +22,26 @@ fn largest(list: &[i32]) -> i32 {
 //     largest
 // }
 
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+    fn y(&self) -> &T {
+        &self.y
+    }
+}
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
+
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
@@ -37,4 +57,7 @@ fn main() {
     //
     // let result = largest(&char_list);
     // println!("The largest char is {}", result);
+
+    let integer = Point { x: 5, y: 10 };
+    let float = Point { x: 1.0, y: 4.0 };
 }
